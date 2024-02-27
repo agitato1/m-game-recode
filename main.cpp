@@ -31,7 +31,7 @@ void cv() {
 
 	cout << "  ____________________________________________________________\n"
 		" |                                                            |\n"
-		" |                        cvEDITS                             |\n"
+		" |                        CREDITS                             |\n"
 		" |                        M-GAME                              |\n"
 		" |____________________________________________________________|\n"
 		" |															    |\n"
@@ -122,7 +122,7 @@ void m1() {
 	case 3: 
 		cout << "Scelta errata";
 		p();
-		vi == 0;
+		vi = 0;
 		ig();
 		cout << "Sei morto!" << endl;
 		break;
@@ -206,10 +206,7 @@ int main()
 
 	} while (tlc(ta) == "y" || tlc(ta) == "yes");
 
-	if (tlc(ta) == "n" || tlc(ta) == "no")
-	{
-		cv();
-	}
+	cv();
 
 	system("pause");
 	return 0;
