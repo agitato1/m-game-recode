@@ -1,6 +1,7 @@
 #include <iostream>
 #include <windows.h>
 #include <stdlib.h>
+#include <cstring>
 
 using namespace std;
 
@@ -11,20 +12,29 @@ using namespace std;
 
 */
 
-string dv = "---------------", n = "Default", us = "    (+!+)\n    __|__    \n      | \n    _|-|_    ";
+//LOWERCASE
+string tlc(string in)
+{
+	for (auto& x : in) {
+		x = tolower(x);
+	}
+
+	return in;
+}
+
+string dv = "---------------", n = "Default", us = "    (+!+)\n    __|__    \n      | \n    _|-|_    ", lu = "31/01/2024", vs = "1.0.0";
 char v = '|', S = ' ', ep = '0', r = 'r';
+int vi = 10;
 
 //CREDITS VIEW
-static void cr() {
-
-	string lu = "31/01/2024", vs = "1.0.0";
+void cv() {
 
 	cout << "  ____________________________________________________________\n"
 		" |                                                            |\n"
-		" |                        CREDITS                             |\n"
+		" |                        cvEDITS                             |\n"
 		" |                        M-GAME                              |\n"
 		" |____________________________________________________________|\n"
-		" |                                                            |\n"
+		" |															    |\n"
 		" |  Last Update:        " << lu << "                            |\n"
 		" |  Game Version:           " << vs << "                             |\n"
 		" |                                                            |\n"
@@ -34,16 +44,18 @@ static void cr() {
 
 }
 
-void pl() {
+//INV. GUI
+void ig() {
+	system("cls");
 	cout << dv << "[" << n << "]" << dv << endl;
-	cout << v << "HP:" << v << v << " " << v << "ARMA:" << r << v << S << v << "EXP:" << ep << v << endl;
+	cout << v << "HP:" << vi << v << " " << v << "ARMA:" << r << v << S << v << "EXP:" << ep << v << endl;
 	cout << dv << dv << endl;
 	cout << us << endl;
 	cout << dv << dv << endl;
 }
 
 // GAMEOVER VIEW
-static void go()
+void gv()
 {
 	system("color 4");
 	system("cls");
@@ -58,11 +70,12 @@ static void go()
 		system("color 4");
 	}
 
-	cr();
+	cv();
 
 }
 
-static void bnv() {
+//WELCOME
+void wlc() {
 	cout << ".___  ___.            _______      ___      .___  ___.  _______ \n|   \\/   |           /  _____|    /   \\     |   \\/   | |   ____|\n|  \\  /  |  ______  |  |  __     /  ^  \\    |  \\  /  | |  |__   \n|  |\\/|  | |______| |  | |_ |   /  /_\\  \\   |  |\\/|  | |   __|  \n|  |  |  |          |  |__| |  /  _____  \\  |  |  |  | |  |____ \n|__|  |__|           \\______| /__/     \\__\\ |__|  |__| |_______|\n " << endl;
 	for (int i = 0; i < 3; i++) {
 		system("color 6");
@@ -72,52 +85,130 @@ static void bnv() {
 	}
 }
 
+//INIZIO
+string ni() {
+	wlc();
+	string a;
+	cout << "Insert your nickname: ";
+	cin >> a;
+	return a;
+}
+
+// PUNTINI
+void p() {
+	for (int i = 0; i < 3; i++)
+	{
+		Sleep(1000 * 1);
+		cout << ".";
+		ep++;
+	}
+}
+
+// FIRST LEVEL
+void m1() {
+	ig();
+	int n = 0;
+
+	cout << "Hai incontrato un mostro, che fai?" << endl;
+	cout << "1) Scappi" << v << " 2) Combatti" << v << " 3) Fai amicizia" << endl;
+	cin >> n;
+
+	switch (n) {
+	case 1: 
+		cout << "Hai fatto una scelta saggia"<<endl;
+		p();
+		cout << "Prosegui l'avventura.."<<endl;
+		break;
+	case 3: 
+		cout << "Scelta errata";
+		p();
+		vi == 0;
+		ig();
+		cout << "Sei morto!" << endl;
+		break;
+
+		system("cls");
+		ig();
+		cout << "\nStato aggiornato!" << endl;
+
+	}
+}
+
+int ar(char a) {
+
+	switch (a)
+	{
+	case '1':
+		cout << dv <<endl;
+		cout << "You have selected the Sword!\n";
+		cout << dv << endl;
+		cout << "      /| ________________\nO|===|* >________________>\n      \\|\n";
+		Sleep(1000 * 3);
+		a = 'S';
+		break;
+	case '2':
+		cout << dv << endl;
+		cout << "You have selected the Bow!\n";
+		cout << dv << endl;
+		cout << "   (\n    \\\n     )\n##-------->\n     )\n    /\n   (\n";
+		Sleep(1000 * 3);
+		a = 'B';
+		break;
+	case '3':
+		cout << dv << endl;
+		cout << "You have selected the Dagger!\n";
+		cout << dv << endl;
+		a = 'A';
+		cout << "._._.|___________________\n|_|_||__________________/\n     |         " << endl;
+		Sleep(1000 * 3);
+		break;
+	}
+
+	system("cls");
+
+	return a;
+}
+
 int main()
 {
 	// WINDOW TITLE
 	SetConsoleTitleA("[M-GAME]");
 
 	// DECLARATIONS
-	string ta = "N";
+	string ta = "No";
 
 	do {
 
-		bnv();
-
-		cout << "Insert your nickname: ";
-		cin >> n;
+		string n = ni();
 
 		Sleep(1000 * 3);
 		system("cls");
-		system("color 0");
-
 
 		system("color 1");
 
-		pl();
+		ig();
 
-		cout << "1) SWORD   2)   BOW    3) AXE \n";
+		cout << "1) SWORD   2)   BOW    3) DAGGER \n";
 		cout << "Select your weapon: \n";
 		cin >> r;
 
-		switch (r)
-		{
-		case '1': cout << "You have selected the Sword!\n"; break;
-		case '2': cout << "You have selected the Bow!\n"; break;
-		case '3': cout << "You have selected the Axe!\n"; break;
-		}
+		r = ar(r);
+
+		m1();
+		Sleep(1000 * 3);
 
 
 		cout << "Try again? (yes/no)\n";
 		cin >> ta;
-		Sleep(1000 * 1);
+		Sleep(1000 * 2);
 		system("cls");
 
-	} while (ta == "Y" || ta == "y" || ta == "yes" || ta == "Yes" || ta == "YEs" || ta == "YES" || ta == "YeS" || ta == "yeS" || ta == "yEs");
 
-	if (ta == "N" || ta == "n" || ta == "No" || ta == "oN" || ta == "no")
+	} while (tlc(ta) == "y" || tlc(ta) == "yes");
+
+	if (tlc(ta) == "n" || tlc(ta) == "no")
 	{
-		cr();
+		cv();
 	}
 
 	system("pause");
