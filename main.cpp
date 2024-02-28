@@ -134,9 +134,12 @@ void m1() {
 	}
 }
 
-int ar(char a) {
+void ar() {
 
-	switch (a)
+	cout << "1) SWORD   2)   BOW    3) DAGGER \nSelect your weapon:";
+	cin >> r;
+
+	switch (r)
 	{
 	case '1':
 		cout << dv <<endl;
@@ -144,7 +147,7 @@ int ar(char a) {
 		cout << dv << endl;
 		cout << "      /| ________________\nO|===|* >________________>\n      \\|\n";
 		Sleep(1000 * 3);
-		a = 'S';
+		r = 'S';
 		break;
 	case '2':
 		cout << dv << endl;
@@ -152,21 +155,19 @@ int ar(char a) {
 		cout << dv << endl;
 		cout << "   (\n    \\\n     )\n##-------->\n     )\n    /\n   (\n";
 		Sleep(1000 * 3);
-		a = 'B';
+		r = 'B';
 		break;
 	case '3':
 		cout << dv << endl;
 		cout << "You have selected the Dagger!\n";
 		cout << dv << endl;
-		a = 'A';
+		r = 'D';
 		cout << "._._.|___________________\n|_|_||__________________/\n     |         " << endl;
 		Sleep(1000 * 3);
 		break;
 	}
 
 	system("cls");
-
-	return a;
 }
 
 int main()
@@ -188,11 +189,7 @@ int main()
 
 		ig();
 
-		cout << "1) SWORD   2)   BOW    3) DAGGER \n";
-		cout << "Select your weapon: \n";
-		cin >> r;
-
-		r = ar(r);
+		ar();
 
 		m1();
 		Sleep(1000 * 3);
